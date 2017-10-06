@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace M3U3Downloader
+namespace M3UDownloader
 {
     static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace M3U3Downloader
+﻿namespace M3UDownloader
 {
     partial class Form1
     {
@@ -36,9 +36,10 @@
             this.textBoxDestination = new System.Windows.Forms.TextBox();
             this.labelSaveTo = new System.Windows.Forms.Label();
             this.buttonBrowse = new System.Windows.Forms.Button();
-            this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonDownload = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.labelProgress = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxSource
@@ -88,6 +89,7 @@
             this.textBoxMessage.Location = new System.Drawing.Point(88, 82);
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
+            this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxMessage.Size = new System.Drawing.Size(390, 60);
             this.textBoxMessage.TabIndex = 4;
             // 
@@ -120,16 +122,17 @@
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
-            // buttonExport
+            // buttonDownload
             // 
-            this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExport.Location = new System.Drawing.Point(484, 175);
-            this.buttonExport.Name = "buttonExport";
-            this.buttonExport.Size = new System.Drawing.Size(75, 23);
-            this.buttonExport.TabIndex = 8;
-            this.buttonExport.Text = "Export!";
-            this.buttonExport.UseVisualStyleBackColor = true;
-            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            this.buttonDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDownload.Enabled = false;
+            this.buttonDownload.Location = new System.Drawing.Point(484, 175);
+            this.buttonDownload.Name = "buttonDownload";
+            this.buttonDownload.Size = new System.Drawing.Size(75, 23);
+            this.buttonDownload.TabIndex = 8;
+            this.buttonDownload.Text = "Download!";
+            this.buttonDownload.UseVisualStyleBackColor = true;
+            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
             // progressBar
             // 
@@ -137,7 +140,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(88, 175);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(390, 23);
+            this.progressBar.Size = new System.Drawing.Size(309, 23);
             this.progressBar.TabIndex = 9;
             // 
             // labelProgress
@@ -149,14 +152,27 @@
             this.labelProgress.TabIndex = 10;
             this.labelProgress.Text = "please, start downloading";
             // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.Enabled = false;
+            this.buttonCancel.Location = new System.Drawing.Point(403, 175);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 12;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 261);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelProgress);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.buttonExport);
+            this.Controls.Add(this.buttonDownload);
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.labelSaveTo);
             this.Controls.Add(this.textBoxDestination);
@@ -182,9 +198,10 @@
         private System.Windows.Forms.TextBox textBoxDestination;
         private System.Windows.Forms.Label labelSaveTo;
         private System.Windows.Forms.Button buttonBrowse;
-        private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonDownload;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label labelProgress;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }
 
