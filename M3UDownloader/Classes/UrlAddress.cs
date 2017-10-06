@@ -64,7 +64,7 @@ namespace M3UDownloader.Classes
 
         public UrlAddress GetBaseAddress()
         {
-            return this.GetPreviousAddress() + "/";
+            return new UrlAddress(this.GetPreviousAddress().Url + "/");
         }
 
         static public UrlAddress operator+(UrlAddress address, string path)
