@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace M3UDownloader
 {
     public delegate void M3UStreamProgressHandler(int segment, int totalCount, string message);
-    public delegate void M3UStreamCompleteHandler(string message);
+    public delegate void M3UStreamCompleteHandler(string message);  
 
     public enum M3UType { Playlist, Stream, Segment };
 
