@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M3UDownloader.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,19 +28,19 @@ namespace M3UDownloader
                 throw new ArgumentException("M3U8 stream is not provided!");
 
             _stream = stream;
-            if (_stream.Segments.Count <= 0)
+            if (_stream.Blocks.Count <= 0)
                 _stream.Reload();
 
             _stream.Progress += _download_Progress;
             _stream.Complete += _download_Complete;
 
-            this.labelProgress.Text = $"{_stream.Segments.Count} segments would be downloaded!";
+            this.labelProgress.Text = $"{_stream.Blocks.Count} segments would be downloaded!";
 
             this.progressBar.Minimum = 0;
-            this.progressBar.Maximum = _stream.Segments.Count;
+            this.progressBar.Maximum = _stream.Blocks.Count;
             this.progressBar.Value = 0;
 
-            this.buttonDownload.Enabled = _stream.Segments.Count > 0;
+            this.buttonDownload.Enabled = _stream.Blocks.Count > 0;
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e)
@@ -57,11 +58,11 @@ namespace M3UDownloader
             if (!source.StartsWith("http://") && !source.StartsWith("https://"))
                 source = "http://" + source;
 
-            var m3u = M3U.CreateFromUrl(source);
+            var m3u = M3UContent.CreateFromUrl(source);
 
-            if (m3u is M3UPlaylist)
+            if (m3u is M3UManifest)
             {
-                var playlist = m3u as M3UPlaylist;
+                var playlist = m3u as M3UManifest;
 
                 var sb = new StringBuilder();
                 sb.AppendLine("PLAYLIST:");
@@ -90,7 +91,7 @@ namespace M3UDownloader
                 sb.AppendLine($"Duration: {stream.Duration}");
                 sb.AppendLine($"Resolution: {stream.Resolution}");
                 sb.AppendLine($"Url: {stream.Url}");
-                sb.AppendLine($"Segments Count: {stream.Segments.Count}");
+                sb.AppendLine($"Segments Count: {stream.Blocks.Count}");
 
                 this.SetStream(stream);
 
